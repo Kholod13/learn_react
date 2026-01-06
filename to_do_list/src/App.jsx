@@ -1,9 +1,8 @@
-function App() {
+import Todo from "./components/Todo"
 
+const App = () => {
   return (
-    <>
-      <h1>To Do List</h1>
-    </>
+    <Todo />
   )
 }
 

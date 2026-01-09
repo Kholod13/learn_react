@@ -2,11 +2,12 @@ import FieldInput from "./FieldInput"
 import Button from "./Button"
 
 const TodoForm = (props) => {
-    const { 
-        onSearchInput,
+    const {
         addTask,
         newTaskTitle,
-        setNewTaskTitle
+        setNewTaskTitle,
+        searchQuery,
+        setSearchQuery,
     } = props;
 
     const onSubmit = (event) => {
@@ -32,7 +33,8 @@ const TodoForm = (props) => {
                     label="Search Task title"
                     className="todo__field"
                     type="search"
-                    onInput={(event) => onSearchInput(event.target.value)}
+                    value={searchQuery}
+                    onInput={(event) => setSearchQuery(event.target.value)}
                 />
             </form>
         </>

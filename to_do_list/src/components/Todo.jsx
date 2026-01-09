@@ -14,15 +14,26 @@ const Todo = () => {
     const [newTaskTitle, setNewTaskTitle] = useState('');
 
     const deleteAllTasks = () => {
-        console.log('Delete all tasks');
+        const isConfirmed = window.confirm('Are you sure you want to delete all tasks?');
+        if (isConfirmed) {
+            setTasks([]);
+        }
     }
 
     const deleteTask = (taskId) => {
-        console.log(`Delete task with id: ${taskId}`);
+        setTasks(tasks.filter(task => task.id !== taskId));
     }
 
     const toggleTaskComplete = (taskId, isDone) => {
-        console.log(`Task ${taskId} ${isDone ? 'is completed' : 'not completed'}`);
+        setTasks(
+            tasks.map(task => {
+                if (task.id === taskId) {
+                    return { ...task, isDone: isDone };
+                }
+
+                return task;
+            })
+        )
     }
 
     const filterTasks = (query) => {
